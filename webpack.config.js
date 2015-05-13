@@ -1,10 +1,10 @@
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: process.env.NODE_ENV !== 'production' ? 'eval' : null,
+  devtool: "source-map",
 
   output: {
-    filename: 'dataloader.js',
+    filename: 'dataloader.min.js',
   },
   
   node: {
@@ -13,7 +13,11 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'jsx-loader?harmony' }
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({ minimize: true })
+  ]
 };

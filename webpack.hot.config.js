@@ -25,12 +25,16 @@ module.exports = {
 
   plugins: plugins,
 
+  node: {
+    fs: "empty"
+  },
+
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: [ 'jsx-loader?harmony', 'react-hot'],
-        include: path.join(__dirname, 'lib/js')
+        loaders: [ 'react-hot', 'babel-loader' ],
+        exclude: /node_modules/
       },
       {
         test: /\.json$/,
