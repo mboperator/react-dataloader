@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var path = require('path');
+
 var plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),

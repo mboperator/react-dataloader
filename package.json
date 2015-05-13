@@ -1,8 +1,8 @@
 {
-  "name": "jetpvck",
+  "name": "react-dataloader",
   "version": "1.0.0",
   "description": "It loads the data.",
-  "main": "dist/dataloader.min.js",
+  "main": "./dist/dataloader.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp dev",

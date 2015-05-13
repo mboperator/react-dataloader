@@ -1,23 +1,33 @@
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: "source-map",
-
   output: {
-    filename: 'dataloader.min.js',
+    library: 'ReactDataloader',
+    libraryTarget: 'umd'
   },
-  
-  node: {
-    fs: "empty"
-  },
+
+  externals: [
+    {
+      "react": {
+        root: "React",
+        commonjs2: "react",
+        commonjs: "react",
+        amd: "react"
+      }
+    }
+  ],
 
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
     ]
   },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({ minimize: true })
-  ]
+  resolve: {
+    extensions: ["", ".js"]
+  }
 };

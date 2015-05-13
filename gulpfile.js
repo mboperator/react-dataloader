@@ -12,8 +12,9 @@ var
 
 var cssPath = "lib/css/**/*.scss";
 var cssOutPath = "public/assets/css";
-var jsPath = "lib/entry.js";
+var jsPath = "lib/example.js";
 var jsOutPath = "dist";
+var jsPublicPath = "public/assets/js";
 
 gulp.task('webpack-hot', webpackServer); 
 
@@ -46,7 +47,8 @@ gulp.task('build_styles', function() {
 gulp.task('build_js', function() {
   return gulp.src(jsPath)
           .pipe(webpack(require('./webpack.config.js')))
-          .pipe(gulp.dest(jsOutPath));
+          .pipe(gulp.dest(jsOutPath))
+          .pipe(gulp.dest(jsPublicPath));
 });
 
 gulp.task('dev', ['browsersync', 'webpack-hot']); 
