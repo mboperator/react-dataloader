@@ -1,0 +1,47 @@
+{
+  "name": "jetpvck",
+  "version": "1.0.0",
+  "description": "It loads the data.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp dev",
+    "build": "gulp"
+  },
+  "author": "Me",
+  "license": "ISC",
+  "dependencies": {
+    "immutable": "",
+    "lokijs": "^1.2.5",
+    "superagent": "^1.2.0"
+  },
+  "peerDependencies": {
+    "react": "^0.13",
+    "react-router": "^0.13",
+    "q": "^1.2.0",
+    "reflux": "^0.2.6",
+    "underscore": "1.8.2"
+  },
+  "devDependencies": {
+    "express": "^4.12.0",
+    "browser-sync": "^2.6.4",
+    "gulp": "^3.8.11",
+    "gulp-cached": "^1.0.4",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-webpack": "^1.3.1",
+    "gulp-sass": "^1.3.3",
+    "json-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.5",
+    "jsx-loader": "^0.12.2",
+    "gulp-autoprefixer": "^2.1.0",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.8.2"
+  },
+  "jshintConfig": {
+    "esnext": true,
+    "expr": true,
+    "node": true
+  }
+}
