@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Jenny", "parent_id": 1 },
+  { "id": 2, "name": "Jorge", "parent_id": 1 },
+  { "id": 3, "name": "Jan", "parent_id": 2 },
+  { "id": 4, "name": "Jack", "parent_id": 2 }
+]
