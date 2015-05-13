@@ -7,12 +7,14 @@ var
   sourcemaps = require('gulp-sourcemaps'),
   browserSync = require('browser-sync').create(),
   reload = browserSync.reload,
+  rename = require('gulp-rename'),
   webpack = require('gulp-webpack'),
   webpackServer = require('./webpack-server');
 
 var cssPath = "lib/css/**/*.scss";
 var cssOutPath = "public/assets/css";
-var jsPath = "lib/example.js";
+var jsPath = "lib/entry.js";
+var jsOutName = "dataloader.min.js";
 var jsOutPath = "dist";
 var jsPublicPath = "public/assets/js";
 
@@ -47,6 +49,7 @@ gulp.task('build_styles', function() {
 gulp.task('build_js', function() {
   return gulp.src(jsPath)
           .pipe(webpack(require('./webpack.config.js')))
+          .pipe(rename(jsOutName))
           .pipe(gulp.dest(jsOutPath))
           .pipe(gulp.dest(jsPublicPath));
 });
