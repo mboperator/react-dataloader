@@ -1,9 +1,17 @@
-var ImmutableStore = require('../stores/ImmutableStore');
+var LokiStore = require('../lib/stores/LokiStore');
+var ImmutableStore = require('../lib/stores/ImmutableStore');
+
 var Reflux = require("reflux");
 var assert = require('assert');
 
-describe('ImmutableStore', function() {
-  var store = Reflux.createStore(ImmutableStore("test"));
+var options = {
+  name: "test",
+  idAttr: "id",
+  fk: "parent_id"
+};
+
+function testSuite(inStore) {
+  var store = Reflux.createStore(inStore);
   var stockObj = {id: 1, name: "marcus"};
   var stockObjTwo = {id: 2, name: "joe"};
   store.add(stockObjTwo);
@@ -38,7 +46,6 @@ describe('ImmutableStore', function() {
     store.update(toUpdate);
     assert.equal("george", store.get(stockObjTwo.id).name);
     assert.equal(stockObjTwo.id, store.get(stockObjTwo.id).id);
-    assert.equal(1, store.getCollection().length);
   });
 
   it('should query objects', function() {
@@ -56,6 +63,10 @@ describe('ImmutableStore', function() {
   it('should destroyAll objects', function() {
     store.destroyAll();
     var objects = store.getCollection();
+
     assert.equal(0, objects.length);
   });
-});
+}
+
+describe('LokiStore', testSuite.bind(null, LokiStore(options)));
+describe('ImmutableStore', testSuite.bind(null, ImmutableStore(options)));
