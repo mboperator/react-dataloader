@@ -18,7 +18,7 @@ var exampleConfig = {
   name: "Parents",
   idAttribute: "id",
   basePath: "http://localhost:8083/api/",
-  endpoint: "sample",
+  endpoint: "checklists",
   storeType: "shared"
 };
 
@@ -27,4 +27,15 @@ var exampleConfig = {
   <SomeViewComponent>
 </CollectionLoader>
 ```
-- SomeViewComponent should expect to receive `(array) collection` as well as any other props passed to CollectionLoader
+- SomeViewComponent should expect to receive `(array) collection`, `(object) actions`, and any other props passed to CollectionLoader
+
+#### At Procore we use it in this way
+```javascript
+<CollectionLoader {...exampleConfig}>
+  <Collection>
+    <ChecklistCell onSelect={this.onSelect}/>
+  </Collection>
+</CollectionLoader>
+```
+- Collection can be thought of as a `layout` component, its inputs are an `(array) collection`, `(object) actions`, and a `(ReactComponent) cell`. It maps over `collection` and returns `cells`.
+- This approach allows us to quickly create customizable lists by simply swapping out the layout cell, and the endpoint we're hitting.
