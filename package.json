@@ -11,6 +11,7 @@
   "author": "Me",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.2",
     "immutable": "",
     "lokijs": "^1.2.5",
     "superagent": "^1.2.0"
