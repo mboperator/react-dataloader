@@ -6,9 +6,9 @@ The main purpose of this component library is to take care of data loading, stor
 
 ## What's included:
 - ObjectLoader
-- CollectionLoader
-- DependentCollectionLoader
-- FilteredCollectionLoader
+- Datasource
+- DependentDatasource
+- FilteredDatasource
 - Examples
 
 ## Usage
@@ -23,19 +23,19 @@ var exampleConfig = {
 };
 
 // In your render function
-<CollectionLoader {...exampleConfig}>
+<Datasource {...exampleConfig}>
   <SomeViewComponent>
-</CollectionLoader>
+</Datasource>
 ```
-- SomeViewComponent should expect to receive `(array) collection`, `(object) actions`, and any other props passed to CollectionLoader
+- SomeViewComponent should expect to receive `(array) collection`, `(object) actions`, and any other props passed to Datasource
 
 #### At Procore we use it in this way
 ```javascript
-<CollectionLoader {...exampleConfig}>
+<Datasource {...exampleConfig}>
   <Collection>
     <ChecklistCell onSelect={this.onSelect}/>
   </Collection>
-</CollectionLoader>
+</Datasource>
 ```
 - Collection can be thought of as a `layout` component, its inputs are an `(array) collection`, `(object) actions`, and a `(ReactComponent) cell`. It maps over `collection` and returns `cells`.
 - This approach allows us to quickly create customizable lists by simply swapping out the layout cell, and the endpoint we're hitting.

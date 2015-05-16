@@ -6,8 +6,7 @@ var assert = require('assert');
 
 var options = {
   name: "test",
-  idAttr: "id",
-  fk: "parent_id"
+  idAttr: "id"
 };
 
 function testSuite(inStore) {
@@ -18,14 +17,14 @@ function testSuite(inStore) {
 
   it('should respond to add', function() {
     store.add(stockObj);
-    var objects = store.getCollection();
+    var objects = store.get();
 
     assert.equal(2, objects.length);
   });
 
   it('should respond to destroy', function() {
     store.destroy(stockObj.id);
-    var objects = store.getCollection();
+    var objects = store.get();
 
     assert.equal(1, objects.length);
     assert.equal(objects[0].name, stockObjTwo.name);
@@ -55,14 +54,14 @@ function testSuite(inStore) {
   });
 
   it('should get all objects', function() {
-    var objects = store.getCollection();
+    var objects = store.get();
 
     assert.equal(1, objects.length);
   });
 
   it('should destroyAll objects', function() {
     store.destroyAll();
-    var objects = store.getCollection();
+    var objects = store.get();
 
     assert.equal(0, objects.length);
   });
