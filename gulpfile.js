@@ -10,6 +10,7 @@ var
   rename = require('gulp-rename'),
   webpack = require('gulp-webpack'),
   webpackServer = require('./webpack-server');
+  server = require('./server');
 
 var cssPath = "lib/css/**/*.scss";
 var cssOutPath = "public/assets/css";
@@ -19,6 +20,7 @@ var jsOutPath = "dist";
 var jsPublicPath = "public/assets/js";
 
 gulp.task('webpack-hot', webpackServer); 
+gulp.task('mockServer', server); 
 
 gulp.task('browsersync', function() {
   browserSync.init({
@@ -54,6 +56,6 @@ gulp.task('build_js', function() {
           .pipe(gulp.dest(jsPublicPath));
 });
 
-gulp.task('dev', ['browsersync', 'webpack-hot']); 
+gulp.task('dev', ['browsersync', 'webpack-hot', 'mockServer']); 
 
 gulp.task('default', ['build_js', 'build_styles']);
