@@ -21,7 +21,7 @@
     "react-router": "^0.13",
     "q": "^1.2.0",
     "reflux": "^0.2.6",
-    "underscore": "1.8.2"
+    "underscore": "^1.7.0"
   },
   "devDependencies": {
     "babel-core": "^5.3.1",
