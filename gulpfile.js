@@ -54,6 +54,10 @@ gulp.task('build_js', function() {
           .pipe(gulp.dest(jsPublicPath));
 });
 
+gulp.task('watch', function() {
+  gulp.watch('./lib/**/*.js', ['build_js']);
+});
+
 gulp.task('dev', ['browsersync', 'webpack-hot']); 
 
 gulp.task('default', ['build_js', 'build_styles']);
