@@ -13,6 +13,8 @@ function testSuite(inStore) {
   var store = Reflux.createStore(inStore);
   var stockObj = {id: 1, name: "marcus"};
   var stockObjTwo = {id: 2, name: "joe"};
+  var stockObjThree = {id: 3, name: "remy"};
+  var stockCollection = [{id: 2, name: "james"}, {id: 3, name: "bobby"}, {id: 4, name: "jacques"}];
   store.add(stockObjTwo);
 
   it('should respond to add', function() {
@@ -58,6 +60,21 @@ function testSuite(inStore) {
 
     assert.equal(1, objects.length);
   });
+
+  it('should set collection', function() {
+    store.setCollection(stockCollection);
+    var objects = store.get();
+
+    assert.equal(3, objects.length);
+  });
+
+  it('should set object', function() {
+    store.setObject(stockObjThree);
+    var object = store.get(3);
+
+    assert.equal("remy", object.name);
+  });
+
 
   it('should destroyAll objects', function() {
     store.destroyAll();
