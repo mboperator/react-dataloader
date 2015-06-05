@@ -54,7 +54,7 @@ gulp.task('build_js', function() {
           .pipe(gulp.dest(jsPublicPath));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['build_js'], function() {
   gulp.watch('./lib/**/*.js', ['build_js']);
 });
 
