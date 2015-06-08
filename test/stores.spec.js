@@ -19,14 +19,14 @@ function testSuite(inStore) {
 
   it('should respond to add', function() {
     store.add(stockObj);
-    var objects = store.get();
+    var objects = store.getCollection();
 
     assert.equal(2, objects.length);
   });
 
   it('should respond to destroy', function() {
     store.destroy(stockObj.id);
-    var objects = store.get();
+    var objects = store.getCollection();
 
     assert.equal(1, objects.length);
     assert.equal(objects[0].name, stockObjTwo.name);
@@ -56,14 +56,14 @@ function testSuite(inStore) {
   });
 
   it('should get all objects', function() {
-    var objects = store.get();
+    var objects = store.getCollection();
 
     assert.equal(1, objects.length);
   });
 
   it('should set collection', function() {
     store.setCollection(stockCollection);
-    var objects = store.get();
+    var objects = store.getCollection();
 
     assert.equal(3, objects.length);
   });
@@ -78,7 +78,7 @@ function testSuite(inStore) {
 
   it('should destroyAll objects', function() {
     store.destroyAll();
-    var objects = store.get();
+    var objects = store.getCollection();
 
     assert.equal(0, objects.length);
   });
