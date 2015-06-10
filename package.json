@@ -14,7 +14,8 @@
     "fs": "0.0.2",
     "immutable": "",
     "lokijs": "^1.2.5",
-    "reqwest": "^1.1.5"
+    "reqwest": "^1.1.5",
+    "uuid": "^2.0.1"
   },
   "peerDependencies": {
     "react": "^0.13",
