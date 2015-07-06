@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var plugins = [
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
-  new webpack.OldWatchingPlugin()
+  new webpack.OldWatchingPlugin(),
 ];
 
 module.exports = {
@@ -13,20 +13,20 @@ module.exports = {
     app: [
       'webpack-dev-server/client?http://localhost:8080/',
       'webpack/hot/only-dev-server',
-      './example.js'
-    ]
+      './example.js',
+    ],
   },
 
   output: {
     filename: '[name].bundle.js',
     path: __dirname + '/public/assets/js',
-    publicPath: 'http://localhost:8080/assets'
+    publicPath: 'http://localhost:8080/assets',
   },
 
   plugins: plugins,
 
   node: {
-    fs: "empty"
+    fs: 'empty',
   },
 
   module: {
@@ -34,20 +34,20 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: [ 'react-hot', 'babel-loader' ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
-      }
-    ]
+        loader: 'json-loader',
+      },
+    ],
   },
 
   resolve: {
-    extensions: ["", ".js"]
+    extensions: ['', '.js'],
   },
 
   debug: true,
 
-  devtool: 'eval-source-map'
+  devtool: 'eval-source-map',
 };
