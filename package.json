@@ -1,6 +1,6 @@
 {
   "name": "react-dataloader",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "It loads the data.",
   "main": "./dist/dataloader.min.js",
   "scripts": {
