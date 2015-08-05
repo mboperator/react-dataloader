@@ -1,39 +1,47 @@
 var webpack = require('webpack');
+var plugins = [
+  new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
+  new webpack.optimize.UglifyJsPlugin({minimize:true, sourceMap: true})
+];
 
 module.exports = {
-  output: {
-    library: 'ReactDataloader',
-    libraryTarget: 'umd'
+  context: __dirname,
+
+  entry: {
+    app: './wrench.js',
+    vendor: [
+      'react',
+      'react/addons',
+      'react-router',
+      'underscore',
+      'q',
+      'reflux',
+      'moment'
+    ]
   },
 
-  externals: [
-    {
-      "react": {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react"
-      }
-    }
-  ],
+  output: {
+    filename: '[name].bundle.js'
+  },
+
+  plugins: plugins,
 
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }
+      { test: /\.js$/, loaders: [ 'react-hot', 'babel-loader' ], exclude: /node_modules/ },
+      { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.gif$/, loader: 'url-loader?mimetype=image/png' },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=10000&minetype=application/font-woff' },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader?name=[name].[ext]' },
     ]
   },
 
   resolve: {
-    extensions: ["", ".js"]
-  },
-
-  // plugins: [
-  //  new webpack.optimize.UglifyJsPlugin({
-  //    compressor: { warnings: false }
-  //  })
-  // ]
+    extensions: ['', '.js'],
+    alias: {
+      'react': __dirname + '/node_modules/react',
+      'react/addons': __dirname + '/node_modules/react/addons'
+    }
+  }
 };
