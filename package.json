@@ -11,6 +11,7 @@
   "author": "Me",
   "license": "ISC",
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "fs": "0.0.2",
     "immutable": "",
     "lokijs": "^1.2.5",
