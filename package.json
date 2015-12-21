@@ -1,6 +1,6 @@
 {
   "name": "react-dataloader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "It loads the data.",
   "main": "./dist/dataloader.min.js",
   "scripts": {
@@ -15,12 +15,11 @@
     "immutable": "",
     "lokijs": "^1.2.5",
     "moment": "^2.10.6",
-    "react-router": "^0.13.3",
     "reqwest": "^1.1.5",
     "uuid": "^2.0.1"
   },
   "peerDependencies": {
-    "react": "^0.13",
+    "react": ">=0.14",
     "q": "^1.2.0",
     "reflux": "^0.2.6",
     "underscore": "^1.7.0"

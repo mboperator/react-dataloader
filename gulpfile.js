@@ -1,6 +1,5 @@
-var 
+var
   gulp = require('gulp'),
-  sass = require('gulp-sass'),
   cached = require('gulp-cached'),
   autoprefixer = require('gulp-autoprefixer'),
   minify = require('gulp-minify-css'),
@@ -18,7 +17,7 @@ var jsOutName = "dataloader.min.js";
 var jsOutPath = "dist";
 var jsPublicPath = "public/assets/js";
 
-gulp.task('webpack-hot', webpackServer); 
+gulp.task('webpack-hot', webpackServer);
 
 gulp.task('browsersync', function() {
   browserSync.init({
@@ -27,23 +26,6 @@ gulp.task('browsersync', function() {
   });
   gulp.watch(cssPath, ['browsersync-build']);
   gulp.watch('public/**/*.html', reload);
-});
-
-gulp.task('browsersync-build', function() {
-  return gulp.src(cssPath)
-            .pipe(sass({errLogToConsole: true }))
-            .pipe(cached('styles'))
-            .pipe(autoprefixer({ browsers: ['last 2 versions']}))
-            .pipe(gulp.dest(cssOutPath))
-            .pipe(reload({stream: true}));
-});
-
-gulp.task('build_styles', function() {
-  return gulp.src(cssPath)
-            .pipe(sass({errLogToConsole: true }))
-            .pipe(autoprefixer({ browsers: ['last 2 versions']}))
-            .pipe(minify({compatibility: 'ie9'}))
-            .pipe(gulp.dest(cssOutPath));
 });
 
 gulp.task('build_js', function() {
@@ -58,6 +40,6 @@ gulp.task('watch', ['build_js'], function() {
   gulp.watch('./lib/**/*.js', ['build_js']);
 });
 
-gulp.task('dev', ['browsersync', 'webpack-hot']); 
+gulp.task('dev', ['browsersync', 'webpack-hot']);
 
-gulp.task('default', ['build_js', 'build_styles']);
+gulp.task('default', ['build_js']);
